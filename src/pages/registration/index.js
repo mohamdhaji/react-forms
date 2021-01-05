@@ -15,7 +15,7 @@ import downArrow from "../../utils/images/downArrow.png";
 import google from "../../utils/images/google.png";
 import line from "../../utils/images/line.png";
 
-import PasswordStrengthMeter from "../../utils/form/PasswordStrengthMeter";
+import PasswordStrengthMeter from "../../utils/form/PasswordStrengthMeter/PasswordStrengthMeter";
 
 const formdata = {
   email: {
