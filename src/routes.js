@@ -5,7 +5,7 @@ import Login from "./pages/login";
 import Register from "./pages/registration";
 export default function Routes() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="react-forms">
       <Switch>
         <Route path="/register" component={Register} />
         <Route path="/" component={Login} />
