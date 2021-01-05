@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import FormField from "../../utils/form/formField";
-import { update } from "../../utils/form/formActions";
+import {
+  update,
+  generateData,
+  isFormValid,
+} from "../../utils/form/formActions";
+// import { auth } from "../../utils/auth/authActions";
 import { Link } from "react-router-dom";
 import { MdKeyboardArrowLeft as Back } from "react-icons/md";
 import logov1 from "../../utils/images/logov1.png";
@@ -9,6 +14,8 @@ import group from "../../utils/images/Group.png";
 import downArrow from "../../utils/images/downArrow.png";
 import google from "../../utils/images/google.png";
 import line from "../../utils/images/line.png";
+
+import PasswordStrengthMeter from "../../utils/form/PasswordStrengthMeter";
 
 const formdata = {
   email: {
@@ -25,7 +32,6 @@ const formdata = {
       email: true,
     },
     valid: false,
-    touched: false,
     validationMessage: "",
     showlabel: true,
   },
@@ -42,7 +48,6 @@ const formdata = {
       required: true,
     },
     valid: false,
-    touched: false,
     validationMessage: "",
     showlabel: true,
   },
@@ -60,7 +65,6 @@ const formdata = {
       confirm: "password",
     },
     valid: false,
-    touched: false,
     validationMessage: "",
     showlabel: true,
   },
@@ -74,10 +78,8 @@ const formdata = {
     },
     validation: {
       required: true,
-      confirm: "password",
     },
     valid: false,
-    touched: false,
     validationMessage: "",
     showlabel: true,
   },
@@ -91,7 +93,14 @@ export default function Register(props) {
     setFormData(newFormdata);
   };
 
-  const submitForm = () => {};
+  const submitForm = async (event) => {
+    event.preventDefault();
+    let dataToSubmit = generateData(formData, "register");
+    let formIsValid = isFormValid(formData, "register");
+    if (formIsValid) {
+      // auth(dataToSubmit,true);
+    }
+  };
   return (
     <div className="container register">
       <div className="left">
@@ -130,6 +139,11 @@ export default function Register(props) {
             formdata={formData.password}
             change={(element) => updateForm(element)}
           />
+          {formData["password"].value ? (
+            <PasswordStrengthMeter
+              password={formData["password"].value}
+            ></PasswordStrengthMeter>
+          ) : null}
           <FormField
             id={"confirmPassword"}
             formdata={formData.confirmPassword}
@@ -141,14 +155,14 @@ export default function Register(props) {
             change={(element) => updateForm(element)}
           />
 
-            <button className="btn" onClick={(event) => submitForm(event)}>
-              Register Account
-            </button>
+          <button className="btn" onClick={(event) => submitForm(event)}>
+            Register Account
+          </button>
 
           <img className="line-v2" src={line} alt="" />
-            <button className="google-btn" onClick={(event) => submitForm(event)}>
-             <img src={google}  alt=""/> Login
-            </button>
+          <button className="google-btn" onClick={(event) => submitForm(event)}>
+            <img src={google} alt="" /> Login
+          </button>
         </form>
       </div>
     </div>
