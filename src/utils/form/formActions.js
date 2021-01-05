@@ -1,0 +1,47 @@
+export const update = (element, formdata, formName) => {
+  const newFormdata = {
+    ...formdata,
+  };
+  const newElement = {
+    ...newFormdata[element.id],
+  };
+
+  if (element.id === "agree") newElement.value = element.event.target.checked;
+  else newElement.value = element.event.target.value;
+
+  if (element.blur) {
+    let validData = validate(newElement, formdata);
+    newElement.valid = validData[0];
+    newElement.validationMessage = validData[1];
+  }
+  
+  newFormdata[element.id] = newElement;
+
+  return newFormdata;
+};
+
+export const validate = (element, formdata = []) => {
+  let error = [true, ""];
+
+  if (element.validation.email) {
+    const valid = /\S+@\S+\.\S+/.test(element.value);
+    const message = `${!valid ? "Must be a valid email" : ""}`;
+    error = !valid ? [valid, message] : error;
+  }
+
+  if (element.validation.confirm) {
+    const valid =
+      element.value.trim() === formdata[element.validation.confirm].value;
+    const message = `${!valid ? "Passwords do not match" : ""}`;
+    error = !valid ? [valid, message] : error;
+  }
+
+  if (element.validation.required) {
+    const valid = element.value.trim() !== "";
+    const message = `${!valid ? "This field is required" : ""}`;
+    error = !valid ? [valid, message] : error;
+  }
+
+  return error;
+};
+
