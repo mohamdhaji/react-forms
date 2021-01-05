@@ -99,7 +99,7 @@
 .check-block {
   width: 400px;
   margin: auto;
-  margin-top: 5px;
+  margin-top: 4px;
 }
 .register .formBlock {
   margin-top: 15px;
@@ -146,6 +146,7 @@ input[type="checkbox" i] {
 .line {
   width: 400px;
   border-bottom: 1px solid#E0E0E0;
+  margin-top:-15px;
 }
 .line-v2 {
   margin-top: 10px;
@@ -212,7 +213,7 @@ input[type="checkbox" i] {
   width: 88%;
   line-height: 38px;
   font-size: 20px;
-  margin-top: 0px;
+  margin-top: -10px;
 }
 
 .register .author {
@@ -279,6 +280,7 @@ input[type="checkbox" i] {
 
 .register .btn {
   height: 55px;
+  margin-top:0px;
 }
 .error_label {
   color: #f44336;
