@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/react-forms/static/css/main.f2a7bbd0.chunk.css",
-    "main.js": "/react-forms/static/js/main.17c4212b.chunk.js",
-    "main.js.map": "/react-forms/static/js/main.17c4212b.chunk.js.map",
-    "runtime-main.js": "/react-forms/static/js/runtime-main.9077265e.js",
-    "runtime-main.js.map": "/react-forms/static/js/runtime-main.9077265e.js.map",
-    "static/js/2.b034c6ef.chunk.js": "/react-forms/static/js/2.b034c6ef.chunk.js",
-    "static/js/2.b034c6ef.chunk.js.map": "/react-forms/static/js/2.b034c6ef.chunk.js.map",
-    "static/js/3.ba8ecb1e.chunk.js": "/react-forms/static/js/3.ba8ecb1e.chunk.js",
-    "static/js/3.ba8ecb1e.chunk.js.map": "/react-forms/static/js/3.ba8ecb1e.chunk.js.map",
+    "main.css": "/react-forms/static/css/main.ab7cdee8.chunk.css",
+    "main.js": "/react-forms/static/js/main.3537991a.chunk.js",
+    "main.js.map": "/react-forms/static/js/main.3537991a.chunk.js.map",
+    "runtime-main.js": "/react-forms/static/js/runtime-main.ee4bbd40.js",
+    "runtime-main.js.map": "/react-forms/static/js/runtime-main.ee4bbd40.js.map",
+    "static/js/2.e337c4e9.chunk.js": "/react-forms/static/js/2.e337c4e9.chunk.js",
+    "static/js/2.e337c4e9.chunk.js.map": "/react-forms/static/js/2.e337c4e9.chunk.js.map",
+    "static/js/3.84e125a2.chunk.js": "/react-forms/static/js/3.84e125a2.chunk.js",
+    "static/js/3.84e125a2.chunk.js.map": "/react-forms/static/js/3.84e125a2.chunk.js.map",
     "index.html": "/react-forms/index.html",
-    "static/css/main.f2a7bbd0.chunk.css.map": "/react-forms/static/css/main.f2a7bbd0.chunk.css.map",
-    "static/js/2.b034c6ef.chunk.js.LICENSE.txt": "/react-forms/static/js/2.b034c6ef.chunk.js.LICENSE.txt",
+    "static/css/main.ab7cdee8.chunk.css.map": "/react-forms/static/css/main.ab7cdee8.chunk.css.map",
+    "static/js/2.e337c4e9.chunk.js.LICENSE.txt": "/react-forms/static/js/2.e337c4e9.chunk.js.LICENSE.txt",
     "static/media/controller.899607da.png": "/react-forms/static/media/controller.899607da.png",
     "static/media/App.css": "/react-forms/static/media/game.0796ab0a.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.9077265e.js",
-    "static/js/2.b034c6ef.chunk.js",
-    "static/css/main.f2a7bbd0.chunk.css",
-    "static/js/main.17c4212b.chunk.js"
+    "static/js/runtime-main.ee4bbd40.js",
+    "static/js/2.e337c4e9.chunk.js",
+    "static/css/main.ab7cdee8.chunk.css",
+    "static/js/main.3537991a.chunk.js"
   ]
 }
