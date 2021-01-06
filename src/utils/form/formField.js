@@ -28,21 +28,28 @@ const Formfield = ({ formdata, change, id }) => {
     return errorMessage;
   };
 
+  const classNames = () => {
+    const classes = [];
+    if (formdata.validationMessage && !formdata.valid) classes.push("error");
+
+    return classes.join(" ");
+  };
+
   const renderTemplate = () => {
     let formTemplate = null;
 
     switch (formdata.element) {
       case "input":
         formTemplate = (
-          <div className="formBlock">
+          <div
+            className="formBlock"
+          >
             {formdata.showlabel ? (
               <div className="label_inputs">{formdata.config.label}</div>
             ) : null}
             <div style={{ position: "relative" }}>
               <input
-                className={
-                  formdata.validationMessage && !formdata.valid ? "error" : ""
-                }
+                className={classNames()}
                 {...formdata.config}
                 value={formdata.value}
                 ref={id === "password" ? passwordInput : null}
@@ -58,7 +65,8 @@ const Formfield = ({ formdata, change, id }) => {
                 ></FiEye>
               ) : null}
             </div>
-            {showError()}
+            {formdata.showError ? showError():""}
+
           </div>
         );
         break;

@@ -1,33 +1,27 @@
-// import axios from "axios";
+import firebase from "../../firebase";
 
-// export const auth = (user, isSignup) => {
-//   const authData = {
-//     email: user.email,
-//     password: user.password,
-//     returnSecureToken: true,
-//   };
-//   let url =
-//     "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC_tan0VeLijiG3tNNkbih6NTrURRPnHJ0";
-    
-//   if (!isSignup) {
-//     url =
-//       "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyC_tan0VeLijiG3tNNkbih6NTrURRPnHJ0";
-//   }
-//   axios
-//     .post(url, authData)
-//     .then((response) => {
-//       console.log(response);
-//       const expirationDate = new Date(
-//         new Date().getTime() + response.data.expiresIn * 1000
-//       );
-//       localStorage.setItem("token", response.data.idToken);
-//       localStorage.setItem("expirationDate", expirationDate);
-//       localStorage.setItem("userId", response.data.localId);
-//       alert("You are registered successfully ");
+export const register = (user) => {
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(user.email, user.password)
+    .then((user) => {
+      console.log(user);
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(error);
+      // ..
+    });
+};
 
-//     })
-//     .catch((err) => {
-//       alert("You are not registered successfully ");
-
-//     });
-// };
+export const login = async (user) => {
+  try {
+    const response = await firebase
+      .auth()
+      .signInWithEmailAndPassword(user.email, user.password);
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+};

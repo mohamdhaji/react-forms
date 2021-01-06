@@ -94,15 +94,27 @@
 .formBlock {
   width: 400px;
   margin: auto;
-  margin-top: 25px;
+  margin-top: 35px;
+  height:80px;
 }
+.login .formBlock:first-of-type{
+  margin-top: 15px;
+
+}
+
 .check-block {
   width: 400px;
   margin: auto;
-  margin-top: 4px;
+  margin-top: 5px;
 }
 .register .formBlock {
-  margin-top: 15px;
+  margin-top: 25px;
+  height:90px;
+
+}
+
+.register .formBlock input{
+
 }
 
 input {
@@ -111,11 +123,11 @@ input {
   border-radius: 6px;
   font-size: 15px;
   width: 100%;
-  height: 55px;
+  height: 60px;
   -webkit-box-sizing: border-box;
   padding: 20px;
   display: block;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 input[type="password" i] {
@@ -163,7 +175,7 @@ input[type="checkbox" i] {
 }
 
 .right .register {
-  margin-top: 1rem;
+  margin-top: -1rem;
   font-size: 16px;
 }
 
@@ -259,7 +271,7 @@ input[type="checkbox" i] {
   align-items: center;
 }
 .register-form .subtitle {
-  margin-top: -10px;
+  margin-top: -20px;
   width: 70%;
   font-size: 20px;
 }
@@ -320,17 +332,17 @@ input[type="checkbox" i] {
 /* REGISTER */
 @media (max-width: 83rem) {
   .register .formBlock {
-    margin-top: 10px ;
+    margin-top: 15px ;
   }
   .register .btn {
-    height: 45px;
+    height: 50px;
   }
   .register .google-btn {
-    height: 45px;
+    height: 50px;
   }
 
   .register input {
-    height: 45px;
+    height: 50px;
   }
 
   

@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import IdentityProviderCard from "../../utils/identityProviderCard";
 import FormField from "../../utils/form/formField";
-import { update } from "../../utils/form/formActions";
-import {Link} from "react-router-dom"
+import {
+  update,
+  generateData,
+  isFormValid,
+  validateAll,
+} from "../../utils/form/formActions";
+import { Link } from "react-router-dom";
 import logov2 from "../../utils/images/logov2.png";
 import qoute2 from "../../utils/images/qoute2.png";
 import controller from "../../utils/images/controller.png";
@@ -10,7 +15,8 @@ import google from "../../utils/images/google.png";
 import git from "../../utils/images/git.png";
 import tweet from "../../utils/images/tweet.png";
 import lin from "../../utils/images/lin.png";
-import line from "../../utils/images/line.png"
+import line from "../../utils/images/line.png";
+import { login } from "../../utils/auth/authActions";
 const formdata = {
   email: {
     element: "input",
@@ -20,15 +26,18 @@ const formdata = {
       type: "email",
       placeholder: "Write your email",
       label: "Your email",
+      autoFocus:true,
+      // autoComplete:"off"
+
     },
     validation: {
       required: true,
       email: true,
     },
     valid: false,
-    touched: false,
     validationMessage: "",
     showlabel: true,
+    showError:true
   },
   password: {
     element: "input",
@@ -38,14 +47,16 @@ const formdata = {
       type: "password",
       placeholder: "Write your password",
       label: "Enter your password",
+      autoComplete:"new-password",
     },
     validation: {
       required: true,
     },
     valid: false,
-    touched: false,
     validationMessage: "",
     showlabel: true,
+    showError:true
+
   },
 };
 
@@ -56,7 +67,15 @@ export default function Login() {
     const newFormdata = update(element, formData, "login");
     setFormData(newFormdata);
   };
-  const submitForm = () => {};
+  const submitForm = (event) => {
+    event.preventDefault();
+    let dataToSubmit = generateData(formData, "login");
+    let formIsValid = isFormValid(formData, "login");
+    if (formIsValid) {
+      login(dataToSubmit)
+    }
+  };
+
   return (
     <div className="container login">
       <div className="left">
@@ -83,8 +102,8 @@ export default function Login() {
           <IdentityProviderCard icon={git} />
         </div>
 
-        <img className="line-v2" src={line} alt=""/>
-        <form className="login-form">
+        <img className="line-v2" src={line} alt="" />
+        <form autoComplete="off" className="login-form">
           <FormField
             id={"email"}
             formdata={formData.email}
@@ -97,16 +116,16 @@ export default function Login() {
             change={(element) => updateForm(element)}
           />
           <div className="formBlock ">
-            <button
-              className="btn"
-              onClick={(event) => submitForm(event)}
-            >
+            <button className="btn" onClick={(event) => submitForm(event)}>
               Log in
             </button>
           </div>
         </form>
         <div className="register">
-          Don’t have an account?<span><Link to="/register"> Register</Link> </span>
+          Don’t have an account?
+          <span>
+            <Link to="/register"> Register</Link>{" "}
+          </span>
         </div>
       </div>
     </div>

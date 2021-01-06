@@ -6,18 +6,17 @@ export const update = (element, formdata, formName) => {
     ...newFormdata[element.id],
   };
 
-  if (element.id === "agree"){
+  if (element.id === "agree") {
     newElement.value = element.event.target.checked;
     newElement.valid = element.event.target.checked;
-  } 
-  else newElement.value = element.event.target.value;
+  } else newElement.value = element.event.target.value;
 
   if (element.blur) {
     let validData = validate(newElement, formdata);
     newElement.valid = validData[0];
     newElement.validationMessage = validData[1];
   }
-  
+
   newFormdata[element.id] = newElement;
 
   return newFormdata;
@@ -35,6 +34,8 @@ export const generateData = (formdata, formName) => {
 
 export const isFormValid = (formdata, formName) => {
   let formIsValid = true;
+
+  if(formName === "login") formdata=validateAll(formdata)
 
   for (let key in formdata) {
     formIsValid = formdata[key].valid && formIsValid;
@@ -67,3 +68,20 @@ export const validate = (element, formdata = []) => {
   return error;
 };
 
+export const validateAll = (formdata, formName) => {
+  const newFormdata = {
+    ...formdata,
+  };
+
+  for (let field in newFormdata) {
+    const newElement = {
+      ...newFormdata[field],
+    };
+    let validData = validate(newElement, formdata);
+    newElement.valid = validData[0];
+    newElement.validationMessage = validData[1];
+    newFormdata[field] = newElement;
+  }
+
+  return newFormdata;
+};

@@ -15,7 +15,8 @@ import downArrow from "../../utils/images/downArrow.png";
 import google from "../../utils/images/google.png";
 import line from "../../utils/images/line.png";
 
-import PasswordStrengthMeter from "../../utils/form/PasswordStrengthMeter/PasswordStrengthMeter";
+import { register } from "../../utils/auth/authActions";
+import PasswordStrengthMeter from "../../utils/form/PasswordStrengthMeter"
 
 const formdata = {
   email: {
@@ -34,6 +35,8 @@ const formdata = {
     valid: false,
     validationMessage: "",
     showlabel: true,
+    showError:true
+
   },
   password: {
     element: "input",
@@ -50,6 +53,8 @@ const formdata = {
     valid: false,
     validationMessage: "",
     showlabel: true,
+    showMeter:true,
+    showError:false
   },
   confirmPassword: {
     element: "input",
@@ -67,6 +72,8 @@ const formdata = {
     valid: false,
     validationMessage: "",
     showlabel: true,
+    showError:true
+
   },
   agree: {
     element: "checkbox",
@@ -98,9 +105,11 @@ export default function Register(props) {
     let dataToSubmit = generateData(formData, "register");
     let formIsValid = isFormValid(formData, "register");
     if (formIsValid) {
-      // auth(dataToSubmit,true);
+      register(dataToSubmit);
     }
   };
+
+  
   return (
     <div className="container register">
       <div className="left">
@@ -123,7 +132,7 @@ export default function Register(props) {
           </div>
         </Link>
 
-        <form className="register-form">
+        <form  className="register-form">
           <h1>Register Individual Account!</h1>
           <p className="subtitle">
             For the purpose of gamers regulation, your details are required.
